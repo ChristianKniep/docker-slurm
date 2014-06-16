@@ -16,13 +16,9 @@ RUN chmod 644 /chome/cluser/.ssh/id_rsa.pub
 RUN chown cluser -R /chome/cluser
 # munge
 RUN yum install -y munge
-RUN chown root:root /var/lib/munge/
-RUN chown root:root /var/log/munge/
-RUN chown root:root /run/munge/
-RUN chown root:root /etc/munge/
 ADD etc/munge/munge.key /etc/munge/munge.key
 RUN chmod 600 /etc/munge/munge.key
-RUN chown root:root /etc/munge/munge.key
+RUN chown root:root /var/lib/munge/ /var/log/munge/ /run/munge/ /etc/munge/ /etc/munge/munge.key
 ADD etc/supervisord.d/munge.ini /etc/supervisord.d/
 
 # misc
